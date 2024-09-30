@@ -10,6 +10,9 @@ import Refund from './pages/refund';
 import Terms from './pages/terms';
 import PaymentSuccess from './pages/PaymentSuccess';
 import ScrollToTop from './ScrollToTop';
+import Calculator from './pages/calculator';
+import ResumeBuilder from './pages/resumeBuilder';
+import ResumePreview from './pages/ResumePreview';
 
 function AppRouter() {
   return (
@@ -26,6 +29,9 @@ function AppRouter() {
         <Route path="/refund" element={<Refund />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/PaymentSuccess" element={<PaymentSuccess />} />
+        <Route path="/calculator" element={<Calculator />} />
+        <Route path="/resumeBuilder" element={<ResumeBuilder />} />
+        <Route path="/ResumePreview" element={<ResumePreview />} />
       </Routes>
     </Router>
   );

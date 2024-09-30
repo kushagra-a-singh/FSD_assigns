@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import styles from './Contact.module.css';
-import backgroundVideo from './vid2.mp4'; // Import the background video file
+import backgroundVideo from './vid2.mp4';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -138,7 +138,7 @@ function Contact() {
         )}
       </main>
 
-      <Footer/>
+      <Footer />
 
     </div>
   );
