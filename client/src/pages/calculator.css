@@ -1,23 +1,40 @@
+/* Root Variables for Color Consistency */
+:root {
+    --primary-color: rgb(237, 47, 98);
+    --secondary-color: rgb(2, 2, 39);
+    --tertiary-color: rgb(19, 95, 225);
+    --light-bg: rgba(255, 255, 255, 0.8);
+    --dark-text: #212529;
+    --heading-color: #ffffff;
+}
+
+/* Calculator Layout */
 .calculator {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
-    padding-top: 350px;
+    background: url('img.jpeg') no-repeat center center,
+                url('https://www.transparenttextures.com/patterns/cubes.png');
+    background-size: cover, 50px 50px;
+    color: rgba(255, 255, 255, 0.886);
+    position: relative;
 }
 
+/* Content Area */
 .content {
-    background: #ffffff;
+    background: var(--light-bg);
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
+/* Calculator Display */
 .calculator-display {
     width: 100%;
     display: flex;
@@ -40,9 +57,10 @@
 
 .calculator-display .result {
     font-size: 1.5rem;
-    color: #007bff;
+    color: var(--tertiary-color);
 }
 
+/* Calculator Buttons */
 .calculator-buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -52,7 +70,7 @@
 .calculator-buttons button {
     padding: 15px;
     font-size: 1.5rem;
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -68,8 +86,10 @@
     background-color: #003f7f;
 }
 
+/* History Section */
 .history {
     margin-top: 20px;
+    z-index: 2;
 }
 
 .history h3 {
@@ -83,5 +103,18 @@
 
 .history li {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--dark-text);
+}
+
+/* Gradient Overlay */
+.calculator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(237, 47, 98, 0.7) 0%, rgba(2, 2, 39, 0.7) 75%, rgba(19, 95, 225, 0.7) 100%);
+    z-index: 1;
+    transition: opacity 0.2s ease;
 }

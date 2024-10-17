@@ -13,6 +13,7 @@ import ScrollToTop from './ScrollToTop';
 import Calculator from './pages/calculator';
 import ResumeBuilder from './pages/resumeBuilder';
 import ResumePreview from './pages/ResumePreview';
+import TicTacToe from './pages/TicTacToe';
 
 function AppRouter() {
   return (
@@ -32,6 +33,7 @@ function AppRouter() {
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/resumeBuilder" element={<ResumeBuilder />} />
         <Route path="/ResumePreview" element={<ResumePreview />} />
+        <Route path="/TicTacToe" element={<TicTacToe />} />
       </Routes>
     </Router>
   );

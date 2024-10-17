@@ -29,7 +29,6 @@ const ResumeBuilder = () => {
 
   return (
     <div className="resume-builder">
-    <Header></Header>
       <h1>Resume Builder</h1>
       <form onSubmit={handleSubmit}>
         <div>

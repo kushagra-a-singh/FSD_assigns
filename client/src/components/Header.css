@@ -1,17 +1,17 @@
 .header {
   position: relative;
   z-index: 2;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .navbar {
-  background-color: rgba(0, 0, 0, 0.7); /* Default dark color */
-  transition: background-color 0.3s ease; /* Smooth transition */
-  padding: 0.8rem 0;
+  padding: 0.3rem 0; /* Reduced padding */
   align-content: center;
+  transition: background-color 0.3s ease; 
 }
 
 .navbar-dark-scrolled {
-  background-color: rgba(0, 0, 0, 0.9); /* Darker color when scrolled */
+  background-color: rgba(0, 0, 0, 1); 
 }
 
 .navbar .container {
@@ -22,21 +22,42 @@
   position: relative;
 }
 
-.navbar-brand{
+.navbar-brand {
   justify-self: center;
 }
 
 .navbar-brand .logo-img {
-  height: 50px;
+  height: 40px; /* Adjusted logo height */
 }
 
 .nav-item {
   position: relative;
-  padding-left: 0.7em;
-  font: normal normal normal 20px/24px Roboto;
-  padding-right: 0.7em;
+  padding-left: 0.5em; /* Adjusted padding */
+  font: normal normal normal 18px/22px Roboto; /* Reduced font size */
+  padding-right: 0.5em; /* Adjusted padding */
 }
 
 .nav-link {
   color: #fffffff2 !important;
+  transition: color 0.3s ease; 
+}
+
+.nav-link.active {
+  color: #007bff; 
+  font-weight: bold; 
+}
+
+.nav-link:hover {
+  color: #ddd; 
+  text-decoration: underline;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

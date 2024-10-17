@@ -47,7 +47,7 @@ const Calculator = () => {
 
     return (
         <div className="calculator">
-            <Header />
+            
             <div className="content">
                 <div className="calculator-display">
                     <input type="text" value={input} placeholder="0" readOnly />

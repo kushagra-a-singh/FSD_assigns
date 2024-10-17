@@ -62,7 +62,7 @@ function Contact() {
         </video>
       </div>
       <div className={styles.overlay}></div>
-      <Header /> {/* Import Header component */}
+       {/* Import Header component */}
       <main className={styles.content}>
         <h1 className={styles.contactUsTitle}>Contact Us</h1>
         <p className={styles.titleDesc}>

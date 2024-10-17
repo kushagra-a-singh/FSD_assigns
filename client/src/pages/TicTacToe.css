@@ -1,0 +1,132 @@
+:root {
+    --primary-color: rgb(237, 47, 98);
+    --secondary-color: rgb(2, 2, 39);
+    --tertiary-color: rgb(19, 95, 225);
+    --light-bg: rgba(255, 255, 255, 0.8);
+    --dark-text: #212529;
+    --heading-color: #ffffff;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full viewport height */
+    background: url('img.jpeg') no-repeat center center,
+                url('https://www.transparenttextures.com/patterns/cubes.png');
+    background-size: cover, 50px 50px;
+    background-attachment: fixed;
+    color: rgba(255, 255, 255, 0.886);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Gradient Overlay */
+.game-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(237, 47, 98, 0.7) 0%, rgba(2, 2, 39, 0.7) 75%, rgba(19, 95, 225, 0.7) 100%);
+    z-index: 1;
+    transition: opacity 0.2s ease;
+}
+
+/* Main game styling */
+.game {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.status {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.mode-selection {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.mode-selection button {
+    margin: 0 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #333a41;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.mode-selection button.active {
+    background-color: #ff7f50;
+}
+
+.mode-selection button:hover {
+    background-color: #333a41;
+}
+
+.board {
+    display: inline-block;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.board-row {
+    display: flex;
+}
+
+.square {
+    width: 60px;
+    height: 60px;
+    font-size: 36px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #e9ecef;
+    border: 2px solid #343a40;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.square:hover {
+    background-color: #ced4da;
+}
+
+.square.X {
+    color: #007bff; /* Blue */
+}
+
+.square.O {
+    color: #dc3545; /* Red */
+}
+
+.reset {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.reset:hover {
+    background-color: #218838;
+}
