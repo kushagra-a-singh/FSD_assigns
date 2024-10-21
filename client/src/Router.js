@@ -14,6 +14,7 @@ import Calculator from './pages/calculator';
 import ResumeBuilder from './pages/resumeBuilder';
 import ResumePreview from './pages/ResumePreview';
 import TicTacToe from './pages/TicTacToe';
+import FlightBooking from './pages/FlightBooking';
 
 function AppRouter() {
   return (
@@ -34,6 +35,7 @@ function AppRouter() {
         <Route path="/resumeBuilder" element={<ResumeBuilder />} />
         <Route path="/ResumePreview" element={<ResumePreview />} />
         <Route path="/TicTacToe" element={<TicTacToe />} />
+        <Route path="/FlightBooking" element={<FlightBooking />} />
       </Routes>
     </Router>
   );

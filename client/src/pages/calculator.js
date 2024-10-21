@@ -68,7 +68,6 @@ const Calculator = () => {
                     </ul>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };
