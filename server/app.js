@@ -38,6 +38,23 @@ app.post('/api/passengers', async (req, res) => {
   }
 });
 
+// Update a passenger
+app.put('/api/passengers/:phone_number', async (req, res) => {
+  try {
+    const updatedPassenger = await Passenger.findOneAndUpdate(
+      { phone_number: req.params.phone_number },
+      req.body,
+      { new: true, runValidators: true }
+    );
+    if (!updatedPassenger) {
+      return res.status(404).json({ message: 'Passenger not found' });
+    }
+    res.json({ message: 'Passenger updated successfully', updatedPassenger });
+  } catch (error) {
+    res.status(400).json({ message: 'Error updating passenger', error });
+  }
+});
+
 // Delete a passenger
 app.delete('/api/passengers/:phone_number', async (req, res) => {
   try {

@@ -13,6 +13,7 @@ const FlightBooking = () => {
         email_id: '',
     });
     const [message, setMessage] = useState('');
+    const [editingPassenger, setEditingPassenger] = useState(null);
 
     // Fetch passenger details
     useEffect(() => {
@@ -36,21 +37,31 @@ const FlightBooking = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/passengers', formData);
-            setMessage(response.data.message);
+            if (editingPassenger) {
+                const response = await axios.put(`http://localhost:5000/api/passengers/${formData.phone_number}`, formData);
+                setMessage(response.data.message);
+            } else {
+                const response = await axios.post('http://localhost:5000/api/passengers', formData);
+                setMessage(response.data.message);
+            }
             fetchPassengers();
-            setFormData({
-                passenger_name: '',
-                from_location: '',
-                to_location: '',
-                departure_date: '',
-                arrival_date: '',
-                phone_number: '',
-                email_id: '',
-            });
+            resetForm();
         } catch (error) {
-            console.error('Error adding passenger:', error);
+            console.error('Error saving passenger:', error);
         }
+    };
+
+    const resetForm = () => {
+        setFormData({
+            passenger_name: '',
+            from_location: '',
+            to_location: '',
+            departure_date: '',
+            arrival_date: '',
+            phone_number: '',
+            email_id: '',
+        });
+        setEditingPassenger(null);
     };
 
     const handleDelete = async (phone_number) => {
@@ -61,6 +72,15 @@ const FlightBooking = () => {
         } catch (error) {
             console.error('Error deleting passenger:', error);
         }
+    };
+
+    const handleEdit = (passenger) => {
+        setFormData({
+            ...passenger,
+            departure_date: passenger.departure_date.split('T')[0], // Format date
+            arrival_date: passenger.arrival_date.split('T')[0], // Format date
+        });
+        setEditingPassenger(passenger.phone_number);
     };
 
     return (
@@ -75,7 +95,7 @@ const FlightBooking = () => {
                 <input type="date" name="arrival_date" value={formData.arrival_date} onChange={handleChange} required />
                 <input type="text" name="phone_number" placeholder="Phone Number" value={formData.phone_number} onChange={handleChange} required />
                 <input type="email" name="email_id" placeholder="Email ID" value={formData.email_id} onChange={handleChange} required />
-                <button type="submit">Add Passenger</button>
+                <button type="submit">{editingPassenger ? 'Update Passenger' : 'Add Passenger'}</button>
             </form>
 
             <h2>Passenger List</h2>
@@ -103,6 +123,7 @@ const FlightBooking = () => {
                             <td>{passenger.phone_number}</td>
                             <td>{passenger.email_id}</td>
                             <td>
+                                <button onClick={() => handleEdit(passenger)}>Edit</button>
                                 <button onClick={() => handleDelete(passenger.phone_number)}>Delete</button>
                             </td>
                         </tr>
