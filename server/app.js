@@ -1,7 +1,8 @@
 // app.js
 import express from 'express';
 import mongoose from 'mongoose';
-import Passenger from './Passenger.js';
+import Passenger from './models/Passenger.js';
+import Contact from './models/Contact.js';
 import cors from 'cors';
 import 'dotenv/config';
 
@@ -62,6 +63,17 @@ app.delete('/api/passengers/:phone_number', async (req, res) => {
     res.json({ message: 'Passenger deleted successfully' });
   } catch (error) {
     res.status(400).json({ message: 'Error deleting passenger', error });
+  }
+});
+
+// Add a contact message
+app.post('/api/contact', async (req, res) => {
+  try {
+    const newContact = new Contact(req.body);
+    await newContact.save();
+    res.status(201).json({ success: true, message: 'Message sent successfully' });
+  } catch (error) {
+    res.status(400).json({ success: false, error: 'Error sending message', details: error });
   }
 });
 

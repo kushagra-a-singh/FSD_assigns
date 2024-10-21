@@ -27,11 +27,7 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const formDataWithTimestamp = {
-        ...formData,
-        created_at: new Date().toISOString(),
-      };
-      const response = await axiosInstance.post('/contact', formDataWithTimestamp);
+      const response = await axiosInstance.post('/contact', formData);
       if (response.data.success) {
         setShowNotification(true);
         setFormData({
@@ -62,7 +58,6 @@ function Contact() {
         </video>
       </div>
       <div className={styles.overlay}></div>
-       {/* Import Header component */}
       <main className={styles.content}>
         <h1 className={styles.contactUsTitle}>Contact Us</h1>
         <p className={styles.titleDesc}>
@@ -139,7 +134,6 @@ function Contact() {
       </main>
 
       <Footer />
-
     </div>
   );
 }
