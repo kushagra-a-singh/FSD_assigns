@@ -1,5 +1,5 @@
 /* FlightBooking.css */
-body {
+.flight-booking {
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #4facfe, #00f2fe);
     margin: 0;
@@ -7,11 +7,11 @@ body {
     color: #333;
 }
 
-h1 {
+.flight-booking h1 {
     text-align: center;
 }
 
-form {
+.flight-booking form {
     background: white;
     padding: 20px;
     border-radius: 5px;
@@ -20,10 +20,10 @@ form {
     max-width: 400px;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="date"],
-button {
+.flight-booking input[type="text"],
+.flight-booking input[type="email"],
+.flight-booking input[type="date"],
+.flight-booking button {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -31,7 +31,7 @@ button {
     border-radius: 4px;
 }
 
-button {
+.flight-booking button {
     background-color: #28a745;
     color: white;
     border: none;
@@ -39,31 +39,32 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
+.flight-booking button:hover {
     background-color: #218838;
 }
 
-table {
+.flight-booking table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-th, td {
+.flight-booking th,
+.flight-booking td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
-th {
+.flight-booking th {
     background-color: #f2f2f2;
 }
 
-tr:hover {
+.flight-booking tr:hover {
     background-color: #f1f1f1;
 }
 
-.modal {
+.flight-booking .modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -75,7 +76,7 @@ tr:hover {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content {
+.flight-booking .modal-content {
     background-color: white;
     margin: 15% auto;
     padding: 20px;
@@ -85,15 +86,15 @@ tr:hover {
     border-radius: 5px;
 }
 
-.close {
+.flight-booking .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.flight-booking .close:hover,
+.flight-booking .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

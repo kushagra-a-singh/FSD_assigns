@@ -99,17 +99,66 @@ const FlightBooking = () => {
     };
 
     return (
-        <div>
+        <div className="flight-booking"> {/* Scoped class added here */}
             <h1>Flight Booking Management System</h1>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="passenger_name" placeholder="Passenger Name" value={formData.passenger_name} onChange={handleChange} required />
-                <input type="text" name="from_location" placeholder="From" value={formData.from_location} onChange={handleChange} required />
-                <input type="text" name="to_location" placeholder="To" value={formData.to_location} onChange={handleChange} required />
-                <input type="date" name="departure_date" value={formData.departure_date} onChange={handleChange} required />
-                <input type="date" name="arrival_date" value={formData.arrival_date} onChange={handleChange} required />
-                <input type="text" name="phone_number" placeholder="Phone Number" value={formData.phone_number} onChange={handleChange} required />
-                <input type="email" name="email_id" placeholder="Email ID" value={formData.email_id} onChange={handleChange} required />
-                <button type="submit">{editingPassenger ? 'Update Passenger' : 'Add Passenger'}</button>
+                <input
+                    type="text"
+                    name="passenger_name"
+                    placeholder="Passenger Name"
+                    value={formData.passenger_name}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="from_location"
+                    placeholder="From"
+                    value={formData.from_location}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="to_location"
+                    placeholder="To"
+                    value={formData.to_location}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="date"
+                    name="departure_date"
+                    value={formData.departure_date}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="date"
+                    name="arrival_date"
+                    value={formData.arrival_date}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="phone_number"
+                    placeholder="Phone Number"
+                    value={formData.phone_number}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="email"
+                    name="email_id"
+                    placeholder="Email ID"
+                    value={formData.email_id}
+                    onChange={handleChange}
+                    required
+                />
+                <button type="submit">
+                    {editingPassenger ? 'Update Passenger' : 'Add Passenger'}
+                </button>
             </form>
 
             <h2>Passenger List</h2>
