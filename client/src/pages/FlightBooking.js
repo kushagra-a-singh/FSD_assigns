@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './FlightBooking.css';
 
 const FlightBooking = () => {
     const [passengers, setPassengers] = useState([]);
@@ -13,9 +14,10 @@ const FlightBooking = () => {
         email_id: '',
     });
     const [message, setMessage] = useState('');
+    const [messageType, setMessageType] = useState('');
     const [editingPassenger, setEditingPassenger] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
-    // Fetch passenger details
     useEffect(() => {
         fetchPassengers();
     }, []);
@@ -37,18 +39,23 @@ const FlightBooking = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            let response;
             if (editingPassenger) {
-                const response = await axios.put(`http://localhost:5000/api/passengers/${formData.phone_number}`, formData);
-                setMessage(response.data.message);
+                response = await axios.put(`http://localhost:5000/api/passengers/${formData.phone_number}`, formData);
+                setMessage('Passenger updated successfully');
             } else {
-                const response = await axios.post('http://localhost:5000/api/passengers', formData);
-                setMessage(response.data.message);
+                response = await axios.post('http://localhost:5000/api/passengers', formData);
+                setMessage('Passenger added successfully');
             }
+            setMessageType('success');
             fetchPassengers();
             resetForm();
         } catch (error) {
             console.error('Error saving passenger:', error);
+            setMessage('Error saving passenger');
+            setMessageType('error');
         }
+        setShowModal(true);
     };
 
     const resetForm = () => {
@@ -69,24 +76,31 @@ const FlightBooking = () => {
             await axios.delete(`http://localhost:5000/api/passengers/${phone_number}`);
             fetchPassengers();
             setMessage('Passenger deleted successfully');
+            setMessageType('success');
         } catch (error) {
             console.error('Error deleting passenger:', error);
+            setMessage('Error deleting passenger');
+            setMessageType('error');
         }
+        setShowModal(true);
     };
 
     const handleEdit = (passenger) => {
         setFormData({
             ...passenger,
-            departure_date: passenger.departure_date.split('T')[0], // Format date
-            arrival_date: passenger.arrival_date.split('T')[0], // Format date
+            departure_date: passenger.departure_date.split('T')[0],
+            arrival_date: passenger.arrival_date.split('T')[0],
         });
         setEditingPassenger(passenger.phone_number);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
     };
 
     return (
         <div>
             <h1>Flight Booking Management System</h1>
-            {message && <p>{message}</p>}
             <form onSubmit={handleSubmit}>
                 <input type="text" name="passenger_name" placeholder="Passenger Name" value={formData.passenger_name} onChange={handleChange} required />
                 <input type="text" name="from_location" placeholder="From" value={formData.from_location} onChange={handleChange} required />
@@ -130,6 +144,16 @@ const FlightBooking = () => {
                     ))}
                 </tbody>
             </table>
+
+            {showModal && (
+                <div className="modal" onClick={closeModal}>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <span className="close" onClick={closeModal}>&times;</span>
+                        <p style={{ color: messageType === 'success' ? 'green' : 'red' }}>{message}</p>
+                        <button onClick={closeModal}>Okay</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
